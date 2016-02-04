@@ -1,5 +1,3 @@
-import java.lang.reflect.Array;
-
 //yeah, yeah, no explicit package, but this is a sample that should be easily runnable without putting in a 
 //fully qualified classpath
 
@@ -7,31 +5,28 @@ public class PrintPrimes {
 
     private static final int MAX_ARRAY_SIZE = 1024 * 1024; //don't use over 1M of memory for seive array and limit exec time
     private static final int FIRST_PRIME = 2;
+    private static final String USAGE = "Usage: \"java PrintPrimes 10\" to print a multiplication table using the first 10 primes";
     
     public static void main(String [] args) {
         if (args.length == 1) {
             try {
                 int numberOfPrimes = Integer.parseInt(args[0]);
+                if (numberOfPrimes <= 0) {
+                    System.exit(0);
+                }
+                
                 int [] primes = calculatePrimes(numberOfPrimes);
 
                 if (primes == null) {
                     System.exit(1);
                 }
 
-                /*
-                for (int i = 0; i < primes.length; ++i) {
-                    System.out.print(primes[i]);
-                    System.out.print(" ");
-                }
-                System.out.println("");
-                */
-
                 printMultiplicationTable(primes);
                 System.exit(0);
             }
             catch (NumberFormatException nfe) {
-                nfe.printStackTrace();
                 System.out.println("Come on! We want an integer!");
+                System.out.println(USAGE);
                 System.exit(1);
             }
             catch (Exception exc) {
@@ -40,7 +35,8 @@ public class PrintPrimes {
             }
         }
         
-        System.out.println("Usage: \"java PrintPrimes 10\" to print a multiplication table using the first 10 primes");
+        System.out.println(USAGE);
+        System.exit(1);
     }
     
     private static void printMultiplicationTable(int [] numbers) {
@@ -72,30 +68,12 @@ public class PrintPrimes {
         System.out.println(buffer);
     }
     
-    private static String printCell(int row, int col) {
-        StringBuffer buffer = new StringBuffer();
-
-        
-        for (int i = 0; i < row; ++i) {
-            buffer.append("\n");
-        }
-        
-        for (int i = 0; i < col; ++i) {
-            buffer.append(" ");
-        }        
-        
-        buffer.append("2");
-
-        return buffer.toString();
-    }
-    
     private static int [] calculatePrimes(int numberOfPrimesToCalculate) {        
         //array holds all numbers starting with first prime (2) up to the MAX_ARRAY_SIZE + 1
         byte [] array = new byte[MAX_ARRAY_SIZE];
 
         //first prime number
-        int nextPrime = 2;
-        int lastIndex = 0;
+        int nextPrime = FIRST_PRIME;
         
         while (true) {
             if ((nextPrime - FIRST_PRIME) >= array.length) {
@@ -104,7 +82,7 @@ public class PrintPrimes {
             
             int multiplier = 1;
             for (int tmp = nextPrime; tmp - FIRST_PRIME < array.length; tmp = nextPrime * multiplier) {
-                //mark as NOT prime using '1' as flag
+                //mark as NOT prime using '1' as flag, print will be marked with '0'
                 if (tmp > nextPrime) {
                     array[tmp - FIRST_PRIME] = 1;
                 }
@@ -132,7 +110,7 @@ public class PrintPrimes {
         int primeCounter = 0;        
         for (int i = 0; i < array.length; ++i) {
             if (array[i] != 1) {
-                primes[primeCounter] = i + 2;
+                primes[primeCounter] = i + FIRST_PRIME;
                 ++primeCounter;
                 if (primeCounter == numberOfPrimesToCalculate) {
                     break;
