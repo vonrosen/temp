@@ -14,6 +14,9 @@ Clone this repo, e.g.
 
 Run
 ---
-Build and Test - mvn install
-Test  - mvn test
-Print table of primes to 10 - java -cp target/classes/ fundingcircle.PrintPrimes 10
+* Build and Test 
+    mvn install
+* Test
+    mvn test
+* Print table of primes to 10 
+    java -cp target/classes/ fundingcircle.PrintPrimes 10
