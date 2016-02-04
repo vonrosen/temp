@@ -1,5 +1,4 @@
-//yeah, yeah, no explicit package, but this is a sample that should be easily runnable without putting in a 
-//fully qualified classpath
+package fundingcircle;
 
 public class PrintPrimes {
 
@@ -39,7 +38,7 @@ public class PrintPrimes {
         System.exit(1);
     }
     
-    private static void printMultiplicationTable(int [] numbers) {
+    public static void printMultiplicationTable(int [] numbers) {
         if (numbers == null) return;
 
         StringBuffer buffer = new StringBuffer("\t\n\t");
@@ -68,7 +67,11 @@ public class PrintPrimes {
         System.out.println(buffer);
     }
     
-    private static int [] calculatePrimes(int numberOfPrimesToCalculate) {        
+    public static int [] calculatePrimes(int numberOfPrimesToCalculate) {        
+        if (numberOfPrimesToCalculate <= 0) {
+            return null;
+        }
+        
         //array holds all numbers starting with first prime (2) up to the MAX_ARRAY_SIZE + 1
         byte [] array = new byte[MAX_ARRAY_SIZE];
 
