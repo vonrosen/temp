@@ -1,12 +1,16 @@
 # temp
 
+Requirements
+------
+* Install JDK 1.7
+* Install Maven
+
+
 Install
 ------
 Clone this repo, e.g.
 
     git clone git@github.com:vonrosen/temp.git
-    Install JDK 1.7
-    Install Maven
 
 Run
 ---
