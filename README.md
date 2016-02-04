@@ -26,3 +26,7 @@ Run
     
     java -cp target/classes/ fundingcircle.PrintPrimes 10
     
+* Print table of primes to N
+    
+    java -cp target/classes/ fundingcircle.PrintPrimes N
+    
