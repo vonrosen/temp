@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+
 //yeah, yeah, no explicit package, but this is a sample that should be easily runnable without putting in a 
 //fully qualified classpath
 
@@ -38,20 +40,33 @@ public class PrintPrimes {
             }
         }
         
-        System.out.println("Please, just give me the number of primes you want to print, okay?");
+        System.out.println("Usage: \"java PrintPrimes 10\" to print a multiplication table using the first 10 primes");
     }
     
     private static void printMultiplicationTable(int [] numbers) {
         if (numbers == null) return;
 
-        StringBuffer buffer = new StringBuffer();
+        StringBuffer buffer = new StringBuffer("\t\n\t");
         
-        //rows
-        for (int row = 0; row < numbers.length; ++row) {
-            //colls
-            for (int col = 0; col < numbers.length; ++col) {
-                buffer.append(printCell(row, col));
+        for (int row = 0; row <= numbers.length; ++row) {
+            if (row == 0) {
+                for (int col = 0; col < numbers.length; ++col) {
+                    buffer.append(numbers[col]);
+                    buffer.append("\t");
+                }
             }
+            else {
+                for (int col = 0; col <= numbers.length; ++col) {
+                    if (col == 0) {
+                        buffer.append(numbers[row - 1]);
+                    }
+                    else {
+                        buffer.append(numbers[row - 1] * numbers[col - 1]);
+                    }
+                    buffer.append("\t");
+                }
+            }
+            buffer.append("\n");
         }
         
         System.out.println(buffer);
@@ -59,6 +74,7 @@ public class PrintPrimes {
     
     private static String printCell(int row, int col) {
         StringBuffer buffer = new StringBuffer();
+
         
         for (int i = 0; i < row; ++i) {
             buffer.append("\n");
@@ -66,7 +82,7 @@ public class PrintPrimes {
         
         for (int i = 0; i < col; ++i) {
             buffer.append(" ");
-        }
+        }        
         
         buffer.append("2");
 
