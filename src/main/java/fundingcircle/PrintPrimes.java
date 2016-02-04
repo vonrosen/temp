@@ -2,7 +2,10 @@ package fundingcircle;
 
 public class PrintPrimes {
 
-    private static final int MAX_ARRAY_SIZE = 1024 * 1024; //don't use over 1M of memory for seive array and limit exec time
+    private static final int MAX_ARRAY_SIZE = 1024 * 1024; // don't use over 1MB
+                                                           // of memory for
+                                                           // seive array and
+                                                           // limit exec time
     private static final int FIRST_PRIME = 2;
     private static final String USAGE = "Usage: \"java PrintPrimes 10\" to print a multiplication table using the first 10 primes";
     
@@ -20,7 +23,7 @@ public class PrintPrimes {
                     System.exit(1);
                 }
 
-                printMultiplicationTable(primes);
+                System.out.println(createMultiplicationTable(primes));
                 System.exit(0);
             }
             catch (NumberFormatException nfe) {
@@ -38,8 +41,8 @@ public class PrintPrimes {
         System.exit(1);
     }
     
-    public static void printMultiplicationTable(int [] numbers) {
-        if (numbers == null) return;
+    public static String createMultiplicationTable(int [] numbers) {
+        if (numbers == null) return "";
 
         StringBuffer buffer = new StringBuffer("\t\n\t");
         
@@ -64,7 +67,7 @@ public class PrintPrimes {
             buffer.append("\n");
         }
         
-        System.out.println(buffer);
+        return buffer.toString();
     }
     
     public static int [] calculatePrimes(int numberOfPrimesToCalculate) {        
