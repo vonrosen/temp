@@ -8,7 +8,7 @@ Requirements
 
 Install
 ------
-Clone this repo, e.g.
+Clone this repo twice, e.g.
 
     git clone git@github.com:vonrosen/temp.git
 
