@@ -8,25 +8,24 @@ Requirements
 
 Install
 ------
-Clone this repo, e.g.
+Clone this repo three times, e.g.
 
     git clone git@github.com:vonrosen/temp.git
 
 Run
 ------
-* Build and Test 
-    
+* Build and Test
+
     mvn install
-    
+
 * Test
-    
+
     mvn test
-    
-* Print table of primes to 10 
-    
+
+* Print table of primes to 10
+
     java -cp target/classes/ fundingcircle.PrintPrimes 10
-    
+
 * Print table of primes to N
-    
+
     java -cp target/classes/ fundingcircle.PrintPrimes N
-    
